@@ -346,16 +346,6 @@ a {
   position: relative;
 }
 
-.event-row::before {
-  content: "";
-  position: absolute;
-  left: 2.2rem;
-  top: 2.2rem;
-  width: 50px;
-  height: 2px;
-  background: var(--ember);
-}
-
 .event-row.reverse .event-text {
   order: 2;
 }
@@ -471,6 +461,25 @@ a {
 .contact .cta {
   background: var(--ember);
   color: #fff;
+}
+
+.contact-panel {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.contact-item {
+  margin: 0;
+}
+
+.contact-item strong {
+  color: var(--accent);
+}
+
+.contact-item a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .whatsapp-form {
@@ -787,18 +796,6 @@ footer {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-
-  .event-row {
-    padding-top: 2.8rem;
-  }
-
-  .event-row::before {
-    top: 1.4rem;
-  }
-
-  .event-text {
-    padding-top: 0.4rem;
   }
 
   .site-header {

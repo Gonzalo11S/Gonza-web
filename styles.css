@@ -409,7 +409,18 @@ a {
   pointer-events: none;
 }
 
-.auto-carousel img.active {
+.auto-carousel:not(.is-ready) img {
+  display: none;
+}
+
+.auto-carousel:not(.is-ready) img:first-child {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.auto-carousel.is-ready img.active {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;

@@ -24,20 +24,38 @@ const revealObserver = new IntersectionObserver(
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
-const carousels = document.querySelectorAll(".auto-carousel");
+const carousels = Array.from(document.querySelectorAll(".auto-carousel"));
+const carouselStates = [];
+
+const setActiveSlide = (slides, nextIndex) => {
+  slides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("active", slideIndex === nextIndex);
+  });
+};
+
 carousels.forEach((carousel) => {
   const slides = Array.from(carousel.querySelectorAll("img"));
   if (slides.length === 0) {
     return;
   }
-  let index = 0;
-  slides[index].classList.add("active");
 
-  setInterval(() => {
-    slides[index].classList.remove("active");
+  let index = 0;
+  setActiveSlide(slides, index);
+  carousel.classList.add("is-ready");
+
+  window.setInterval(() => {
     index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
+    setActiveSlide(slides, index);
   }, 3000);
+
+  carouselStates.push({ carousel, slides });
+});
+
+window.addEventListener("pageshow", () => {
+  carouselStates.forEach(({ carousel, slides }) => {
+    carousel.classList.add("is-ready");
+    setActiveSlide(slides, 0);
+  });
 });
 
 const lightbox = document.getElementById("lightbox");

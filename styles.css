@@ -789,6 +789,18 @@ footer {
     transition: none;
   }
 
+  .event-row {
+    padding-top: 2.8rem;
+  }
+
+  .event-row::before {
+    top: 1.4rem;
+  }
+
+  .event-text {
+    padding-top: 0.4rem;
+  }
+
   .site-header {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;

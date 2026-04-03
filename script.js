@@ -15,12 +15,11 @@ const revealObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-      } else {
-        entry.target.classList.remove("in-view");
+        revealObserver.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+  { threshold: 0.08, rootMargin: "0px 0px -5% 0px" }
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
